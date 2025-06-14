@@ -14,48 +14,6 @@
       padding: 40px 20px;
     }
 
-     #wireframe-bg {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      background: radial-gradient(#0f1017, #000);
-      overflow: hidden;
-    }
-
-    #wireframe-bg::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.05) 0,
-        rgba(255, 255, 255, 0.05) 1px,
-        transparent 1px,
-        transparent 20px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.05) 0,
-        rgba(255, 255, 255, 0.05) 1px,
-        transparent 1px,
-        transparent 20px
-      );
-      animation: moveGrid 20s linear infinite;
-    }
-
-    @keyframes moveGrid {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(-20px, -20px);
-      }
-    }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -190,7 +148,6 @@
   </style>
 </head>
 <body>
-  <div id="wireframe-bg"></div>
   <h1 class="fade-in delay-1">MIDNIGHT</h1>
   <p class="subtitle fade-in delay-2">Midnight</p>
   <div class="button-group fade-in delay-3">
