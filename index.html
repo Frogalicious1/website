@@ -80,6 +80,54 @@
         .btn-glow:hover {
             box-shadow: 0 0 15px rgba(192, 132, 252, 0.4), 0 0 30px rgba(192, 132, 252, 0.2);
         }
+
+        .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          padding: 20px;
+          font-size: 14px;
+          background: transparent;
+          color: #ccc;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          margin-top: 60px;
+          animation: fadeIn 1s ease forwards;
+          animation-delay: 1.8s;
+        }
+    
+        .footer-left {
+          flex: 1 1 auto;
+        }
+        
+        .footer-right {
+          display: flex;
+          gap: 20px;
+          flex: 1 1 auto;
+          justify-content: flex-end;
+        }
+        
+        .footer-link {
+          color: #ccc;
+          text-decoration: none;
+          border-bottom: 1px solid transparent;
+          transition: border-color 0.3s;
+        }
+        
+        .footer-link:hover {
+          border-color: #ccc;
+        }
+        
+        .status-dot {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          background: orange;
+          border-radius: 50%;
+          margin-left: 6px;
+        }
+
+
     </style>
 </head>
 <body class="antialiased">
@@ -146,9 +194,16 @@
         </main>
 
         <!-- Footer -->
-        <footer class="text-center py-8 border-t border-slate-800">
-            <p class="text-slate-500">&copy; 2025 Midnight Executor. All rights reserved.</p>
+        <footer class="footer">
+          <div class="footer-left">
+            © 2025 Velocity. All rights reserved. &nbsp; Version 0.2.2 <span class="status-dot"></span>
+          </div>
+          <div class="footer-right">
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
         </footer>
+
     </div>
 
     <script>
