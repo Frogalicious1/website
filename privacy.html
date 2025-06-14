@@ -15,17 +15,27 @@
       color: #E2E8F0;
       overflow-x: hidden;
     }
-    .glass {
-      background: rgba(10, 10, 15, 0.35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        #starry-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .glass-card {
+            background: rgba(10, 10, 15, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
   </style>
 </head>
 <body>
-  <div class="min-h-screen py-12 px-6 md:px-20 lg:px-40">
-    <div class="glass p-8 md:p-12 rounded-2xl">
+<canvas id="starry-sky"></canvas>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold mb-6">Privacy Policy</h1>
+        <div class="glass-card p-6 rounded-xl">
       <h1 class="text-4xl font-bold mb-6 text-white">Privacy Policy</h1>
       <p class="mb-4">Effective Date: June 14, 2025</p>
       <p class="mb-6">This Privacy Policy explains how Midnight ("we," "our," or "us") collects, uses, discloses, and protects your information when you use our software and website.</p>
@@ -64,6 +74,45 @@
 
       <h2 class="text-2xl font-semibold mb-2">8. Contact</h2>
       <p>If you have any questions about this policy, contact us via our official Discord server or website support form.</p>
+    <script>
+        const canvas = document.getElementById('starry-sky');
+        const ctx = canvas.getContext('2d');
+        let stars = [], width, height;
+        const numStars = 200;
+        function initStars() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random(),
+                    dAlpha: Math.random() * 0.02 - 0.01
+                });
+            }
+        }
+        function drawStars() {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+                star.alpha += star.dAlpha;
+                if (star.alpha > 1 || star.alpha < 0) star.dAlpha *= -1;
+                star.x -= 0.1;
+                if (star.x < 0) star.x = width;
+            });
+            requestAnimationFrame(drawStars);
+        }
+        window.onresize = initStars;
+        initStars();
+        drawStars();
+    </script>
     </div>
   </div>
 </body>
