@@ -1,205 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Midnight</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #1d1f2b, #0f1017);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midnight Executor</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js for the graph -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    #stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -2;
-      pointer-events: none;
-    }
+    <style>
+        /* Custom styles for the starry background and animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #E2E8F0; /* slate-200 */
+            overflow-x: hidden;
+        }
 
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0;
-      animation: twinkle 4s infinite ease-in-out;
-    }
+        #starry-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
+        /* Glassmorphism effect for containers */
+        .glass-card {
+            background: rgba(10, 10, 15, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        /* Animation for elements fading in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
 
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-    }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .fade-in.delay-1 { animation-delay: 0.3s; }
-    .fade-in.delay-2 { animation-delay: 0.6s; }
-    .fade-in.delay-3 { animation-delay: 0.9s; }
-    .fade-in.delay-4 { animation-delay: 1.2s; }
-    .fade-in.delay-5 { animation-delay: 1.5s; }
+        /* Custom button glow effect */
+        .btn-glow {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    h1 {
-      font-size: 64px;
-      margin-bottom: 10px;
-    }
-
-    p.subtitle {
-      font-size: 18px;
-      color: #aaa;
-      margin-bottom: 30px;
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 60px;
-    }
-
-    .button {
-      background-color: white;
-      color: black;
-      padding: 14px 30px;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s, transform 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .button:hover {
-      background-color: #ccc;
-      transform: scale(1.05);
-    }
-
-    .button.secondary {
-      background-color: transparent;
-      border: 2px solid white;
-      color: white;
-    }
-
-    .button.secondary:hover {
-      background-color: white;
-      color: black;
-      transform: scale(1.05);
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto 40px;
-    }
-
-    .feature {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      transition: border-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .feature:hover {
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-5px);
-    }
-
-    .feature:nth-child(1) { animation-delay: 0.3s; }
-    .feature:nth-child(2) { animation-delay: 0.6s; }
-    .feature:nth-child(3) { animation-delay: 0.9s; }
-    .feature:nth-child(4) { animation-delay: 1.2s; }
-    .feature:nth-child(5) { animation-delay: 1.5s; }
-
-    .feature h3 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    .feature p {
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: #666;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 1.8s;
-    }
-  </style>
+        .btn-glow:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 40%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.8s ease;
+        }
+        
+        .btn-glow:hover:before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(192, 132, 252, 0.4), 0 0 30px rgba(192, 132, 252, 0.2);
+        }
+    </style>
 </head>
-<body>
-  <div id="stars"></div>
-  <h1 class="fade-in delay-1">Midnight Executor</h1>
-  <p class="subtitle fade-in delay-2">An executor that's truly pure bliss..</p>
-  <div class="button-group fade-in delay-3">
-    <a href="https://www.dropbox.com/scl/fi/yahn1ezhzmwoe0a8d1hdu/MidStrap.zip?rlkey=8lech61yp84nh9z0vf1na7c1d&st=x8tfsrxv&dl=1" target="_blank" class="button">Download Midnight</a>
-    <a href="https://discord.gg/6NE27dCaWX" target="_blank" class="button secondary">Discord</a>
-  </div>
-  <div class="features">
-    <div class="feature">
-      <h3>Free, forever</h3>
-      <p>Midnight is completely free, enjoy amazing features for no price!</p>
+<body class="antialiased">
+
+    <!-- Starry Sky Background -->
+    <canvas id="starry-sky"></canvas>
+
+    <div class="relative z-10">
+        <main class="container mx-auto px-6 py-12 md:py-24">
+
+            <!-- Header Section -->
+            <header class="text-center mb-16 md:mb-24 fade-in-section">
+                <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">
+                    Midnight Executor
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300">
+                    An executor that's truly pure bliss.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <button class="btn-glow bg-white text-black font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-gray-200 transform hover:scale-105">
+                        Download Midnight
+                    </button>
+                    <button class="btn-glow bg-purple-500/20 text-purple-300 border border-purple-500/50 font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-purple-500/30 transform hover:scale-105">
+                        Join the Discord
+                    </button>
+                </div>
+            </header>
+
+            <!-- Features Section -->
+            <section class="mb-20 md:mb-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">Free, forever</h3>
+                        <p class="text-slate-400">Midnight is completely free, enjoy amazing features for no price!</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">99% UNC, 98% sUNC</h3>
+                        <p class="text-slate-400">Features level 8 permissions, 99% UNC and 98% sUNC!</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">Limitless capabilities</h3>
+                        <p class="text-slate-400">Midnight supports both Loadstring and Luarmor for ultimate flexibility.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 400ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">Made with love..</h3>
+                        <p class="text-slate-400">With help from the r/robloxhackers community and dedicated developers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Graph Section -->
+            <section class="text-center mb-20 md:mb-32 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">A Cognitive Leap Forward</h2>
+                <p class="text-lg text-slate-300 mb-12 max-w-3xl mx-auto">Witness the exponential brain IQ increase after using Midnight. The results speak for themselves.</p>
+                <div class="glass-card rounded-2xl p-4 sm:p-8 max-w-4xl mx-auto">
+                    <canvas id="iqChart"></canvas>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 border-t border-slate-800">
+            <p class="text-slate-500">&copy; 2025 Midnight Executor. All rights reserved.</p>
+        </footer>
     </div>
-    <div class="feature">
-      <h3>99% UNC, 98% sUNC</h3>
-      <p>Midnight features level 8 permissions, 99% UNC and 98% sUNC!</p>
-    </div>
-    <div class="feature">
-      <h3>Limitless capabilities</h3>
-      <p>Midnight supports both Loadstring and Luarmor!</p>
-    </div>
-    <div class="feature">
-      <h3>Made with love..</h3>
-      <p>With help from the r/robloxhackers community.</p>
-    </div>
-  </div>
-  <footer>
-    Midnight © 2025 - Created by RYZE
-  </footer>
-  <script>
-    const starContainer = document.getElementById('stars');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${Math.random() * 5}s`;
-      star.style.animationDuration = `${3 + Math.random() * 2}s`;
-      starContainer.appendChild(star);
-    }
-  </script>
+
+    <script>
+        // --- Starry Sky Background Animation ---
+        const canvas = document.getElementById('starry-sky');
+        const ctx = canvas.getContext('2d');
+
+        let stars = [];
+        let width, height;
+        const numStars = 200;
+
+        function initStars() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    alpha: Math.random(),
+                    dAlpha: Math.random() * 0.02 - 0.01 // Twinkle effect
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+
+                star.alpha += star.dAlpha;
+                if (star.alpha > 1) {
+                    star.alpha = 1;
+                    star.dAlpha *= -1;
+                } else if (star.alpha < 0) {
+                    star.alpha = 0;
+                    star.dAlpha *= -1;
+                }
+                
+                // Move stars slowly
+                star.x -= 0.1;
+                if(star.x < 0) star.x = width;
+            });
+            requestAnimationFrame(drawStars);
+        }
+        
+        window.onresize = initStars;
+        initStars();
+        drawStars();
+
+        // --- Fade-in on Scroll Animation ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const sections = document.querySelectorAll('.fade-in-section');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Chart.js IQ Graph ---
+        const chartCanvas = document.getElementById('iqChart');
+        let iqChart;
+
+        const chartObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                // Animate chart only once
+                if (iqChart) iqChart.destroy();
+                createChart();
+                chartObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.5 });
+        
+        chartObserver.observe(chartCanvas);
+
+        function createChart() {
+            const chartCtx = chartCanvas.getContext('2d');
+            const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(192, 132, 252, 0.8)'); // purple-400
+            gradient.addColorStop(1, 'rgba(124, 58, 237, 0.8)'); // purple-700
+            
+            const initialData = {
+                labels: ['Before Midnight', 'After Midnight'],
+                datasets: [{
+                    label: 'Brain IQ',
+                    data: [100, 100], // Start 'After' at the same level
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0.2)',
+                        gradient
+                    ],
+                    borderColor: [
+                        'rgba(255, 255, 255, 0.4)',
+                        'rgba(192, 132, 252, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8,
+                }]
+            };
+
+            iqChart = new Chart(chartCtx, {
+                type: 'bar',
+                data: initialData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                           enabled: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                callback: function(value) {
+                                     return value + ' IQ';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.9)',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    animation: {
+                        onComplete: () => {
+                           // You can add further animations here if needed
+                        }
+                    }
+                }
+            });
+
+            // Trigger the dramatic increase animation
+            setTimeout(() => {
+                iqChart.data.datasets[0].data = [100, 5000]; // 5000% of 100 is 5000
+                iqChart.update();
+            }, 500);
+        }
+    </script>
 </body>
 </html>
