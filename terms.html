@@ -5,24 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Terms of Service - Midnight</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0f0f1a;
-      color: #e2e8f0;
-      padding: 2rem;
+      background-color: #000000;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(10, 10, 15, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
-<body>
-  <h1 class="text-4xl font-bold mb-6">Terms of Service</h1>
-  <p class="text-slate-300 mb-4">Last updated: June 14, 2025</p>
+<body class="antialiased">
+  <main class="container mx-auto px-6 py-12 md:py-24">
+    <header class="text-center mb-16">
+      <h1 class="text-5xl md:text-6xl font-black text-white mb-4">Terms of Service</h1>
+      <p class="text-slate-400">Last updated: June 14, 2025</p>
+    </header>
 
-  <p class="mb-4">
-    Welcome to Midnight. By using our software, you agree to the following terms...
-  </p>
-  <!-- Add more content here -->
+    <section class="glass-card rounded-2xl p-8 max-w-4xl mx-auto text-slate-300">
+      <p class="mb-4">
+        Welcome to Midnight. These Terms of Service govern your use of our software and services. By using Midnight, you agree to these terms.
+      </p>
 
-  <a href="index.html" class="text-purple-400 underline mt-10 block">← Back to Home</a>
+      <h2 class="text-2xl font-bold text-white mt-6 mb-2">1. Acceptance of Terms</h2>
+      <p class="mb-4">By downloading, accessing, or using the Midnight software, you agree to be bound by these terms and all applicable laws and regulations.</p>
+
+      <h2 class="text-2xl font-bold text-white mt-6 mb-2">2. Usage Restrictions</h2>
+      <p class="mb-4">You agree not to misuse the software, redistribute it without permission, or use it for illegal activities.</p>
+
+      <h2 class="text-2xl font-bold text-white mt-6 mb-2">3. Modifications</h2>
+      <p class="mb-4">We reserve the right to modify or replace these terms at any time. Updates will be posted on this page.</p>
+
+      <h2 class="text-2xl font-bold text-white mt-6 mb-2">4. Contact</h2>
+      <p>If you have any questions about these Terms, contact us through our official Discord server.</p>
+    </section>
+
+    <div class="text-center mt-12">
+      <a href="index.html" class="text-purple-400 underline hover:text-purple-300">← Back to Home</a>
+    </div>
+  </main>
 </body>
 </html>
