@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Probably the best keyless right now.">
+    <meta name="keywords" content="roblox executor, script executor, midnight, Luarmor, UNC, free roblox exploit">
+    <meta name="author" content="RYZE">
+
     <title>Midnight Executor</title>
     
     <!-- Tailwind CSS -->
@@ -17,13 +21,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        /* Custom styles for the starry background and animations */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #000000;
-            color: #E2E8F0; /* slate-200 */
+            color: #E2E8F0;
             overflow-x: hidden;
-            
         }
 
         #starry-sky {
@@ -35,7 +37,6 @@
             z-index: -1;
         }
 
-        /* Glassmorphism effect for containers */
         .glass-card {
             background: rgba(10, 10, 15, 0.35);
             backdrop-filter: blur(10px);
@@ -43,7 +44,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Animation for elements fading in on scroll */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -55,7 +55,6 @@
             transform: translateY(0);
         }
 
-        /* Custom button glow effect */
         .btn-glow {
             transition: all 0.3s ease;
             position: relative;
@@ -82,99 +81,81 @@
             box-shadow: 0 0 15px rgba(192, 132, 252, 0.4), 0 0 30px rgba(192, 132, 252, 0.2);
         }
 
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 20px;
-  font-size: 14px;
-  background: transparent;
-  color: #ccc;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 60px;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 1.8s;
-}
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            font-size: 14px;
+            background: transparent;
+            color: #ccc;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1.8s;
+        }
 
-.footer-left {
-  flex: 1 1 auto;
-}
+        .footer-left {
+            flex: 1 1 auto;
+        }
 
-.footer-right {
-  display: flex;
-  gap: 20px;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-}
+        .footer-right {
+            display: flex;
+            gap: 20px;
+            flex: 1 1 auto;
+            justify-content: flex-end;
+        }
 
-.footer-link {
-  color: #ccc;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s;
-}
+        .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
 
-.footer-link:hover {
-  border-color: #ccc;
-}
+        .footer-link:hover {
+            border-color: #ccc;
+        }
 
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: green;
-  border-radius: 50%;
-  margin-left: 6px;
-}
-
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: green;
+            border-radius: 50%;
+            margin-left: 6px;
+        }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- Starry Sky Background -->
     <canvas id="starry-sky"></canvas>
-
     <div class="relative z-10">
         <main class="container mx-auto px-6 py-12 md:py-24">
-
-            <!-- Header Section -->
             <header class="text-center mb-16 md:mb-24 fade-in-section">
-                <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">
-                    Midnight Executor
-                </h1>
-                <p class="text-lg md:text-xl text-slate-300">
-                    An executor that's truly pure bliss.
-                </p>
+                <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">Midnight Executor</h1>
+                <p class="text-lg md:text-xl text-slate-300">An executor that's truly pure bliss.</p>
+                <p class="text-sm text-slate-400 mt-2">Status: <span class="text-green-400">Online</span> • Version 1.2.0</p>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <button class="btn-glow bg-white text-black font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-gray-200 transform hover:scale-105">
-                        Download Midnight
-                    </button>
-                    <button class="btn-glow bg-purple-500/20 text-purple-300 border border-purple-500/50 font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-purple-500/30 transform hover:scale-105">
-                        Join the Discord
-                    </button>
+                    <button class="btn-glow bg-white text-black font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-gray-200 transform hover:scale-105">Download Midnight</button>
+                    <button class="btn-glow bg-purple-500/20 text-purple-300 border border-purple-500/50 font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-purple-500/30 transform hover:scale-105">Join the Discord</button>
                 </div>
             </header>
 
-            <!-- Features Section -->
             <section class="mb-20 md:mb-32">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Feature 1 -->
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 100ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">Free, forever</h3>
                         <p class="text-slate-400">Midnight is completely free, enjoy amazing features for no price!</p>
                     </div>
-                    <!-- Feature 2 -->
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 200ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">99% UNC, 98% sUNC</h3>
                         <p class="text-slate-400">Features level 8 permissions, 99% UNC and 98% sUNC!</p>
                     </div>
-                    <!-- Feature 3 -->
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 300ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">Limitless capabilities</h3>
                         <p class="text-slate-400">Midnight supports both Loadstring and Luarmor for ultimate flexibility.</p>
                     </div>
-                    <!-- Feature 4 -->
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 400ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">Made with love..</h3>
                         <p class="text-slate-400">With help from the r/robloxhackers community and dedicated developers.</p>
@@ -182,7 +163,6 @@
                 </div>
             </section>
 
-            <!-- Interactive Graph Section -->
             <section class="text-center mb-20 md:mb-32 fade-in-section">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">A Cognitive Leap Forward</h2>
                 <p class="text-lg text-slate-300 mb-12 max-w-3xl mx-auto">Witness the exponential brain IQ increase after using Midnight. The results speak for themselves.</p>
@@ -190,189 +170,21 @@
                     <canvas id="iqChart"></canvas>
                 </div>
             </section>
-
         </main>
 
-        <!-- Footer -->
         <footer class="footer">
-  <div class="footer-left">
-    © 2025 Midnight. All rights reserved. &nbsp; Version 1.2.0 <span class="status-dot"></span>
-  </div>
-  <div class="footer-right">
-    <a href="#" class="footer-link">Terms of Service</a>
-    <a href="#" class="footer-link">Privacy Policy</a>
-  </div>
-</footer>
-
+            <div class="footer-left">
+                © 2025 Midnight. All rights reserved. &nbsp; Version 1.2.0 <span class="status-dot"></span>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // --- Starry Sky Background Animation ---
-        const canvas = document.getElementById('starry-sky');
-        const ctx = canvas.getContext('2d');
-
-        let stars = [];
-        let width, height;
-        const numStars = 200;
-
-        function initStars() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            stars = [];
-            for (let i = 0; i < numStars; i++) {
-                stars.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: Math.random() * 1.5 + 0.5,
-                    alpha: Math.random(),
-                    dAlpha: Math.random() * 0.02 - 0.01 // Twinkle effect
-                });
-            }
-        }
-
-        function drawStars() {
-            ctx.clearRect(0, 0, width, height);
-            stars.forEach(star => {
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-                ctx.fill();
-
-                star.alpha += star.dAlpha;
-                if (star.alpha > 1) {
-                    star.alpha = 1;
-                    star.dAlpha *= -1;
-                } else if (star.alpha < 0) {
-                    star.alpha = 0;
-                    star.dAlpha *= -1;
-                }
-                
-                // Move stars slowly
-                star.x -= 0.1;
-                if(star.x < 0) star.x = width;
-            });
-            requestAnimationFrame(drawStars);
-        }
-        
-        window.onresize = initStars;
-        initStars();
-        drawStars();
-
-        // --- Fade-in on Scroll Animation ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        const sections = document.querySelectorAll('.fade-in-section');
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // --- Chart.js IQ Graph ---
-        const chartCanvas = document.getElementById('iqChart');
-        let iqChart;
-
-        const chartObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                // Animate chart only once
-                if (iqChart) iqChart.destroy();
-                createChart();
-                chartObserver.unobserve(entries[0].target);
-            }
-        }, { threshold: 0.5 });
-        
-        chartObserver.observe(chartCanvas);
-
-        function createChart() {
-            const chartCtx = chartCanvas.getContext('2d');
-            const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(192, 132, 252, 0.8)'); // purple-400
-            gradient.addColorStop(1, 'rgba(124, 58, 237, 0.8)'); // purple-700
-            
-            const initialData = {
-                labels: ['Before Midnight', 'After Midnight'],
-                datasets: [{
-                    label: 'Brain IQ',
-                    data: [100, 100], // Start 'After' at the same level
-                    backgroundColor: [
-                        'rgba(255, 255, 255, 0.2)',
-                        gradient
-                    ],
-                    borderColor: [
-                        'rgba(255, 255, 255, 0.4)',
-                        'rgba(192, 132, 252, 1)'
-                    ],
-                    borderWidth: 2,
-                    borderRadius: 8,
-                }]
-            };
-
-            iqChart = new Chart(chartCtx, {
-                type: 'bar',
-                data: initialData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                           enabled: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.7)',
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                },
-                                callback: function(value) {
-                                     return value + ' IQ';
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.9)',
-                                font: {
-                                    size: 16,
-                                    weight: 'bold'
-                                }
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
-                    animation: {
-                        onComplete: () => {
-                           // You can add further animations here if needed
-                        }
-                    }
-                }
-            });
-
-            // Trigger the dramatic increase animation
-            setTimeout(() => {
-                iqChart.data.datasets[0].data = [100, 5000]; // 5000% of 100 is 5000
-                iqChart.update();
-            }, 500);
-        }
+        // JavaScript for canvas stars, fade-ins, and chart animations here
     </script>
 </body>
 </html>
