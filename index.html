@@ -216,8 +216,18 @@
 
     <script>
 // ---- Countdown ----
-const countdownElement = document.getElementById("countdown");
-  const endTime = new Date().getTime() + 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+ const countdownElement = document.getElementById("countdown");
+
+  // Check if an end time exists in localStorage
+  let endTime = localStorage.getItem("countdownEndTime");
+
+  if (!endTime) {
+    // Set 4 hours from now and store it
+    endTime = new Date().getTime() + 4 * 60 * 60 * 1000;
+    localStorage.setItem("countdownEndTime", endTime);
+  } else {
+    endTime = parseInt(endTime);
+  }
 
   const updateCountdown = setInterval(() => {
     const now = new Date().getTime();
@@ -228,6 +238,7 @@ const countdownElement = document.getElementById("countdown");
       countdownElement.innerText = "Now Live!";
       countdownElement.classList.remove("text-white");
       countdownElement.classList.add("text-green-400");
+      localStorage.removeItem("countdownEndTime");
       return;
     }
 
