@@ -216,38 +216,64 @@
 
     <script>
 // ---- Countdown ----
- const countdownElement = document.getElementById("countdown");
+const BIN_ID = "684e19f98a456b7966ae4755";
+const API_KEY = "$2a$10$L1TwJVbQ6HtmUQ37bvEoneaYr4MEVvtP42Bk7qIF9YEhrQnDC6s6u";
+const BIN_URL = `https://api.jsonbin.io/v3/qs/684e19758561e97a50246a02`;
 
-  // Check if an end time exists in localStorage
-  let endTime = localStorage.getItem("countdownEndTime");
+const countdownElement = document.getElementById("countdown");
 
+// Fetch existing endTime from JSONBin
+fetch(BIN_URL + "/latest", {
+  headers: {
+    "X-Master-Key": API_KEY
+  }
+})
+.then(res => res.json())
+.then(data => {
+  let endTime = data.record.endTime;
+
+  // If no endTime is stored, set it 4 hours from now
   if (!endTime) {
-    // Set 4 hours from now and store it
-    endTime = new Date().getTime() + 4 * 60 * 60 * 1000;
-    localStorage.setItem("countdownEndTime", endTime);
-  } else {
-    endTime = parseInt(endTime);
+    endTime = Date.now() + 4 * 60 * 60 * 1000;
+
+    fetch(BIN_URL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": API_KEY
+      },
+      body: JSON.stringify({ endTime })
+    });
   }
 
-  const updateCountdown = setInterval(() => {
-    const now = new Date().getTime();
+  // Start the countdown
+  startCountdown(endTime);
+})
+.catch(err => {
+  console.error("Failed to fetch endTime from JSONBin:", err);
+  countdownElement.innerText = "Countdown unavailable";
+});
+
+function startCountdown(endTime) {
+  const timer = setInterval(() => {
+    const now = Date.now();
     const timeLeft = endTime - now;
 
     if (timeLeft <= 0) {
-      clearInterval(updateCountdown);
+      clearInterval(timer);
       countdownElement.innerText = "Now Live!";
       countdownElement.classList.remove("text-white");
       countdownElement.classList.add("text-green-400");
-      localStorage.removeItem("countdownEndTime");
       return;
     }
 
-    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-    const seconds = Math.floor((timeLeft / 1000) % 60);
+    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
     countdownElement.innerText = `ETA ${hours}h ${minutes}m ${seconds}s`;
   }, 1000);
+}
 
         // --- Starry Sky Background Animation ---
         const canvas = document.getElementById('starry-sky');
