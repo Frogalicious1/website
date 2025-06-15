@@ -150,9 +150,9 @@
                     An executor that's truly pure bliss.
                 </p>
                 <div class="mt-4 text-sm text-slate-400">
-                    <span>Status: <span class="text-red-400 font-semibold">Down</span></span>
-                    <span class="mx-2">|</span>
-                    <span>Version: <span class="text-white font-semibold">ETA 4 hours</span></span>
+                  <span>Status: <span class="text-red-400 font-semibold">Down</span></span>
+                  <span class="mx-2">|</span>
+                  <span>Version: <span id="countdown" class="text-white font-semibold">ETA 4 hours</span></span>
                 </div>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
                     <a href="https://www.dropbox.com/scl/fi/yahn1ezhzmwoe0a8d1hdu/MidStrap.zip?rlkey=8lech61yp84nh9z0vf1na7c1d&st=x8tfsrxv&dl=1" target="_blank" class="btn-glow bg-white text-black font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-gray-200 transform hover:scale-105 text-center">
@@ -215,6 +215,29 @@
     </div>
 
     <script>
+// ---- Countdown ----
+const countdownElement = document.getElementById("countdown");
+  const endTime = new Date().getTime() + 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+
+  const updateCountdown = setInterval(() => {
+    const now = new Date().getTime();
+    const timeLeft = endTime - now;
+
+    if (timeLeft <= 0) {
+      clearInterval(updateCountdown);
+      countdownElement.innerText = "Now Live!";
+      countdownElement.classList.remove("text-white");
+      countdownElement.classList.add("text-green-400");
+      return;
+    }
+
+    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+    const seconds = Math.floor((timeLeft / 1000) % 60);
+
+    countdownElement.innerText = `ETA ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
+
         // --- Starry Sky Background Animation ---
         const canvas = document.getElementById('starry-sky');
         const ctx = canvas.getContext('2d');
