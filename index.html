@@ -277,6 +277,49 @@
   </div>
 </section>
 
+        <!-- Changelog Dropdown -->
+<section class="bg-black text-white py-20 px-4">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-2">Recent Updates</h2>
+    <p class="text-slate-400 mb-6">
+      Stay up-to-date with the latest features, improvements, and bug fixes.
+    </p>
+
+    <!-- Dropdown -->
+    <div x-data="{ open: false }" class="bg-zinc-900 rounded-xl shadow-lg overflow-hidden">
+      <button
+        @click="open = !open"
+        class="w-full text-left px-6 py-4 flex items-center justify-between text-white font-semibold text-lg hover:bg-zinc-800 transition">
+        <span>View Changelog</span>
+        <svg :class="open ? 'rotate-180' : ''" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div x-show="open" x-transition class="bg-zinc-800 text-left px-6 py-4 text-slate-300 space-y-4">
+        <div>
+          <p class="font-bold text-white">June 18, 2025</p>
+          <ul class="list-disc list-inside">
+            <li>Added feature tab switching UI</li>
+            <li>Improved script execution engine</li>
+            <li>Minor bug fixes and performance tweaks</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-white">June 10, 2025</p>
+          <ul class="list-disc list-inside">
+            <li>Initial release of Zenith Executor</li>
+            <li>Support for 300+ custom APIs</li>
+            <li>Free, keyless execution</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <!-- Footer -->
         <footer class="footer">
