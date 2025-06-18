@@ -9,23 +9,23 @@
     <link rel="icon" href="/icon.ico" type="image/x-icon">
     <title>Midnight Executor</title>
     
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Chart.js for the graph -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        /* Custom styles for the starry background and animations */
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #000000;
-            color: #E2E8F0; /* slate-200 */
+            color: #E2E8F0; 
             overflow-x: hidden;
         }
 
@@ -38,7 +38,7 @@
             z-index: -1;
         }
 
-        /* Glassmorphism effect for containers */
+
         .glass-card {
             background: rgba(10, 10, 15, 0.35);
             backdrop-filter: blur(10px);
@@ -46,7 +46,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Animation for elements fading in on scroll */
+
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -58,7 +58,7 @@
             transform: translateY(0);
         }
 
-        /* Custom button glow effect */
+
         .btn-glow {
             transition: all 0.3s ease;
             position: relative;
@@ -136,13 +136,13 @@
 </head>
 <body class="antialiased">
 
-    <!-- Starry Sky Background -->
+
     <canvas id="starry-sky"></canvas>
 
     <div class="relative z-10">
         <main class="container mx-auto px-6 py-12 md:py-24">
 
-            <!-- Header Section -->
+
             <header class="text-center mb-16 md:mb-24 fade-in-section">
                 <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">
                     Midnight Executor
@@ -165,25 +165,25 @@
                 </div>
             </header>
 
-            <!-- Features Section -->
+
             <section class="mb-20 md:mb-32">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Feature 1 -->
+
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 100ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">Free, forever</h3>
                         <p class="text-slate-400">Midnight is completely free, enjoy amazing features for no price!</p>
                     </div>
-                    <!-- Feature 2 -->
+    
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 200ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">99% UNC, 98% sUNC</h3>
                         <p class="text-slate-400">Features level 8 permissions, 99% UNC and 98% sUNC!</p>
                     </div>
-                    <!-- Feature 3 -->
+
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 300ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">Limitless capabilities</h3>
                         <p class="text-slate-400">Midnight supports both Loadstring and Luarmor for ultimate flexibility.</p>
                     </div>
-                    <!-- Feature 4 -->
+
                     <div class="glass-card p-8 rounded-2xl fade-in-section" style="transition-delay: 400ms;">
                         <h3 class="text-2xl font-bold text-white mb-2">Made with love..</h3>
                         <p class="text-slate-400">With help from the r/robloxhackers community and dedicated developers.</p>
@@ -191,7 +191,7 @@
                 </div>
             </section>
 
-            <!-- Interactive Graph Section -->
+
             <section class="text-center mb-20 md:mb-32 fade-in-section">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">A Cognitive Leap Forward</h2>
                 <p class="text-lg text-slate-300 mb-12 max-w-3xl mx-auto">Witness the exponential brain IQ increase after using Midnight. The results speak for themselves.</p>
@@ -202,35 +202,29 @@
 
         </main>
 
-        <!-- Features -->
 
-<!-- Include Tailwind and Alpine.js -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<section class="bg-black text-white py-20 px-4" x-data="{ tab: 'script' }">
+<section class="text-white py-20 px-4" x-data="{ tab: 'script' }">
   <div class="max-w-7xl mx-auto">
 
-    <!-- Tabs -->
+
     <div class="flex space-x-4 mb-10">
       <button
         @click="tab = 'script'"
-        :class="tab === 'script' ? 'bg-purple-700 text-white' : 'bg-zinc-800 text-slate-300'"
+        :class="tab === 'script' ? 'bg-purple-700 text-white' : 'bg-zinc-800/60 text-slate-300'"
         class="px-4 py-2 rounded-xl font-semibold transition">
         Script Execution
       </button>
       <button
         @click="tab = 'decompiler'"
-        :class="tab === 'decompiler' ? 'bg-purple-700 text-white' : 'bg-zinc-800 text-slate-300'"
+        :class="tab === 'decompiler' ? 'bg-purple-700 text-white' : 'bg-zinc-800/60 text-slate-300'"
         class="px-4 py-2 rounded-xl font-semibold transition">
-        Decompiler(PLANNED)
+        Decompiler (PLANNED)
       </button>
     </div>
 
-    <!-- Content Panel -->
-    <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
 
-      <!-- Left: Image -->
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-16 glass-card rounded-2xl p-6">
+
       <div class="w-full lg:w-1/2">
         <img :src="{
           'script': 'your-script-image.png',
@@ -239,9 +233,8 @@
         }[tab]" alt="Feature Preview" class="rounded-2xl shadow-2xl" />
       </div>
 
-      <!-- Right: Dynamic Content -->
       <div class="w-full lg:w-1/2 space-y-6">
-        <!-- Script Execution -->
+
         <template x-if="tab === 'script'">
           <div>
             <h2 class="text-4xl font-bold mb-2">Unmatched Script Execution</h2>
@@ -255,10 +248,10 @@
           </div>
         </template>
 
-        <!-- Decompiler -->
+
         <template x-if="tab === 'decompiler'">
           <div>
-            <h2 class="text-4xl font-bold mb-2">Decompiler(PLANNED)</h2>
+            <h2 class="text-4xl font-bold mb-2">Decompiler (PLANNED)</h2>
             <p class="text-slate-400 mb-4">Reverse-engineer scripts quickly and accurately using our built-in decompiler.</p>
             <ul class="text-sm space-y-2 text-slate-400 mb-4">
               <li>✅ View and modify decompiled Lua code</li>
@@ -268,8 +261,9 @@
           </div>
         </template>
 
-        <!-- CTA -->
-        <a href="https://www.dropbox.com/scl/fi/yahn1ezhzmwoe0a8d1hdu/MidStrap.zip?rlkey=8lech61yp84nh9z0vf1na7c1d&st=x8tfsrxv&dl=1" class="inline-block bg-purple-600 hover:bg-purple-700 transition text-white font-semibold py-3 px-6 rounded-xl shadow-md">
+
+        <a href="https://www.dropbox.com/scl/fi/yahn1ezhzmwoe0a8d1hdu/MidStrap.zip?rlkey=8lech61yp84nh9z0vf1na7c1d&st=x8tfsrxv&dl=1"
+           class="inline-block bg-purple-600 hover:bg-purple-700 transition text-white font-semibold py-3 px-6 rounded-xl shadow-md">
           Get Midnight Now →
         </a>
       </div>
@@ -277,28 +271,27 @@
   </div>
 </section>
 
-        <!-- Changelog Dropdown -->
-<section class="bg-black text-white py-20 px-4">
+<section class="text-white py-20 px-4">
   <div class="max-w-2xl mx-auto text-center">
     <h2 class="text-4xl font-bold mb-2">Recent Updates</h2>
     <p class="text-slate-400 mb-6">
       Stay up-to-date with the latest features, improvements, and bug fixes.
     </p>
 
-    <!-- Dropdown -->
-    <div x-data="{ open: false }" class="bg-zinc-900 rounded-xl shadow-lg overflow-hidden">
+
+    <div x-data="{ open: false }" class="bg-zinc-900/50 backdrop-blur-lg rounded-xl shadow-lg overflow-hidden">
       <button
         @click="open = !open"
-        class="w-full text-left px-6 py-4 flex items-center justify-between text-white font-semibold text-lg hover:bg-zinc-800 transition">
+        class="w-full text-left px-6 py-4 flex items-center justify-between text-white font-semibold text-lg hover:bg-zinc-800/50 transition">
         <span>View Changelog</span>
         <svg :class="open ? 'rotate-180' : ''" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
 
-      <!-- Content -->
-      <div x-show="open" x-transition class="bg-zinc-800 text-left px-6 py-4 text-slate-300 space-y-4">
+
+      <div x-show="open" x-transition class="bg-zinc-800/60 backdrop-blur px-6 py-4 text-slate-300 space-y-4">
         <div>
           <p class="font-bold text-white">June 18, 2025</p>
           <ul class="list-disc list-inside">
@@ -321,7 +314,7 @@
 </section>
 
 
-        <!-- Footer -->
+
         <footer class="footer">
           <div class="footer-left">
             © 2025 Midnight. All rights reserved. &nbsp; Version 1.2.0 <span class="status-dot"></span>
@@ -342,7 +335,7 @@ const BIN_URL = `https://api.jsonbin.io/v3/b/684e19f98a456b7966ae4755`;
 
 const countdownElement = document.getElementById("countdown");
 
-// Fetch existing endTime from JSONBin
+
 fetch(BIN_URL + "/latest", {
   headers: {
     "X-Master-Key": "$2a$10$.50hCJQQ3iUGCF5m/57.8uTcrnPqP4uW76ikl0mSo2kdhcTADTV1K"
@@ -352,7 +345,7 @@ fetch(BIN_URL + "/latest", {
 .then(data => {
   let endTime = data.record.endTime;
 
-  // If no endTime is stored, set it 4 hours from now
+
   if (!endTime) {
     endTime = Date.now() + 4 * 60 * 60 * 1000;
 
@@ -366,7 +359,7 @@ fetch(BIN_URL + "/latest", {
     });
   }
 
-  // Start the countdown
+
   startCountdown(endTime);
 })
 .catch(err => {
@@ -395,7 +388,7 @@ function startCountdown(endTime) {
   }, 1000);
 }
 
-        // --- Starry Sky Background Animation ---
+
         const canvas = document.getElementById('starry-sky');
         const ctx = canvas.getContext('2d');
 
@@ -415,7 +408,7 @@ function startCountdown(endTime) {
                     y: Math.random() * height,
                     radius: Math.random() * 1.5 + 0.5,
                     alpha: Math.random(),
-                    dAlpha: Math.random() * 0.02 - 0.01 // Twinkle effect
+                    dAlpha: Math.random() * 0.02 - 0.01 
                 });
             }
         }
@@ -437,7 +430,7 @@ function startCountdown(endTime) {
                     star.dAlpha *= -1;
                 }
                 
-                // Move stars slowly
+
                 star.x -= 0.1;
                 if(star.x < 0) star.x = width;
             });
@@ -448,7 +441,7 @@ function startCountdown(endTime) {
         initStars();
         drawStars();
 
-        // --- Fade-in on Scroll Animation ---
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -464,13 +457,13 @@ function startCountdown(endTime) {
             observer.observe(section);
         });
 
-        // --- Chart.js IQ Graph ---
+
         const chartCanvas = document.getElementById('iqChart');
         let iqChart;
 
         const chartObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
-                // Animate chart only once
+
                 if (iqChart) iqChart.destroy();
                 createChart();
                 chartObserver.unobserve(entries[0].target);
@@ -482,14 +475,14 @@ function startCountdown(endTime) {
         function createChart() {
             const chartCtx = chartCanvas.getContext('2d');
             const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(192, 132, 252, 0.8)'); // purple-400
-            gradient.addColorStop(1, 'rgba(124, 58, 237, 0.8)'); // purple-700
+            gradient.addColorStop(0, 'rgba(192, 132, 252, 0.8)'); 
+            gradient.addColorStop(1, 'rgba(124, 58, 237, 0.8)'); 
             
             const initialData = {
                 labels: ['Before Midnight', 'After Midnight'],
                 datasets: [{
                     label: 'Brain IQ',
-                    data: [100, 100], // Start 'After' at the same level
+                    data: [100, 100], 
                     backgroundColor: [
                         'rgba(255, 255, 255, 0.2)',
                         gradient
@@ -549,15 +542,15 @@ function startCountdown(endTime) {
                     },
                     animation: {
                         onComplete: () => {
-                           // You can add further animations here if needed
+
                         }
                     }
                 }
             });
 
-            // Trigger the dramatic increase animation
+
             setTimeout(() => {
-                iqChart.data.datasets[0].data = [100, 5000]; // 5000% of 100 is 5000
+                iqChart.data.datasets[0].data = [100, 5000]; 
                 iqChart.update();
             }, 500);
         }
