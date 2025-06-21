@@ -126,7 +126,7 @@
           display: inline-block;
           width: 8px;
           height: 8px;
-          background: green;
+          background: red;
           border-radius: 50%;
           margin-left: 6px;
         }
@@ -151,9 +151,9 @@
                     An executor that's truly pure bliss.
                 </p>
                 <div class="mt-4 text-sm text-slate-400">
-                  <span>Status: <span class="text-green-400 font-semibold">Working, Use alt + vpn</span></span>
+                  <span>Status: <span id="countdown" class="text-red-400 font-semibold">Down</span></span>
                   <span class="mx-2">|</span>
-                  <span>Version: <span class="text-white font-semibold">1.2.4</span></span>
+                  <span>Version: <span class="text-white font-semibold">1.2.5</span></span>
                 </div>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
                     <a href="https://www.dropbox.com/scl/fi/h0x68oik684kyyn5gjzf7/MidStrap.zip?rlkey=3pma2g0jixf30g8keb945cy28&st=afrfn5ic&dl=1" target="_blank" class="btn-glow bg-white text-black font-bold py-3 px-8 rounded-full w-full sm:w-auto hover:bg-gray-200 transform hover:scale-105 text-center">
@@ -312,7 +312,7 @@
 
         <footer class="footer">
           <div class="footer-left">
-            © 2025 Midnight. All rights reserved. &nbsp; Version 1.2.3 <span class="status-dot"></span>
+            © 2025 Midnight. All rights reserved. &nbsp; Version 1.2.5 <span class="status-dot"></span>
           </div>
           <div class="footer-right">
             <a href="terms.html" class="footer-link">Terms of Service</a>
@@ -369,7 +369,7 @@ function startCountdown(endTime) {
 
     if (timeLeft <= 0) {
       clearInterval(timer);
-      countdownElement.innerText = "Now Live!";
+      countdownElement.innerText = "Updating soon...";
       countdownElement.classList.remove("text-white");
       countdownElement.classList.add("text-green-400");
       return;
