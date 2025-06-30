@@ -219,12 +219,12 @@
         class="px-4 py-2 rounded-xl font-semibold transition">
         Midnight LITE
       </button>
-   <!--   <button
-        @click="tab = 'Mid1.5'"
-        :class="tab === 'mid1.5png' ? 'bg-purple-700 text-white' : 'bg-zinc-800/60 text-slate-300'"
+      <button
+        @click="tab = 'midnightfull'"
+        :class="tab === 'mid15' ? 'bg-purple-700 text-white' : 'bg-zinc-800/60 text-slate-300'"
         class="px-4 py-2 rounded-xl font-semibold transition">
         Midnight(WIP)
-      </button> -->
+      </button> 
     </div>
 
 
@@ -233,6 +233,7 @@
       <div class="w-full lg:w-1/2">
         <img :src="{
           'midlite': 'midlite.png',
+          'mid15': 'mid15.png',
         }[tab]" alt="Feature Preview" class="rounded-2xl shadow-2xl" />
       </div>
 
@@ -252,7 +253,7 @@
         </template>
 
 
- <!--     <template x-if="tab === 'Mid1.5'">
+      <template x-if="tab === 'Mid1.5'">
           <div>
             <h2 class="text-4xl font-bold mb-2">Midnight(WIP)</h2>
             <p class="text-slate-400 mb-4">The best option in Roblox exploiting.</p>
@@ -263,7 +264,7 @@
               <li>✅ Perfect for daily exploiters.</li>
             </ul>
           </div>
-        </template> -->
+        </template> 
 
 
         <a href="https://www.dropbox.com/scl/fi/yahn1ezhzmwoe0a8d1hdu/MidStrap.zip?rlkey=8lech61yp84nh9z0vf1na7c1d&st=x8tfsrxv&dl=1"
