@@ -215,7 +215,7 @@
     <div class="flex space-x-4 mb-10">
       <button
         @click="tab = 'midlite'"
-        :class="tab === 'midlitepng' ? 'bg-purple-700 text-white' : 'bg-zinc-800/60 text-slate-300'"
+        :class="tab === 'midlite' ? 'bg-purple-700 text-white' : 'bg-zinc-800/60 text-slate-300'"
         class="px-4 py-2 rounded-xl font-semibold transition">
         Midnight LITE
       </button>
@@ -232,8 +232,7 @@
 
       <div class="w-full lg:w-1/2">
         <img :src="{
-          'midlitepng': 'your-script-image.png',
-          'mid1.5png': 'your-decompiler-image.png',
+          'midlite': 'midlite.png',
         }[tab]" alt="Feature Preview" class="rounded-2xl shadow-2xl" />
       </div>
 
